@@ -1,533 +1,368 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Butovsky Lab Data Portal - GitHub Pages</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            background: #000;
-            color: olive;
-            overflow-x: hidden;
-            min-height: 100vh;
-        }
-
-        .background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -2;
-            background: radial-gradient(#1a1a1a, #000);
-            overflow: hidden;
-        }
-
-        .cell {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            animation: moveCell 30s linear infinite;
-        }
-
-        @keyframes moveCell {
-    0% {
-        transform: translate(0, 0);
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Butovsky Lab Data Portal - GitHub Pages</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-    25% {
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #000;
+      color: white;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    .cell {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      animation: moveCell 30s linear infinite;
+    }
+
+    @keyframes moveCell {
+      0% {
+        transform: translate(0, 0);
+      }
+      25% {
         transform: translate(20px, -30px);
-    }
-    50% {
+      }
+      50% {
         transform: translate(-20px, -10px);
-    }
-    75% {
+      }
+      75% {
         transform: translate(30px, 10px);
-    }
-    100% {
+      }
+      100% {
         transform: translate(0, 0);
+      }
     }
-}
-            100% { transform: translateY(-10vh); }
-        }
 
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 2rem;
-            padding: 1rem 0;
-            z-index: 10;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      padding: 1rem 0;
+      z-index: 10;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
 
-        .navbar a {
-            color: white;
-            text-decoration: none;
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: color 0.3s;
-        }
+    .navbar-menu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      list-style: none;
+      gap: 2rem;
+    }
 
-        .navbar a:hover {
-            color: #ccc;
-        }
+    .navbar-menu li a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.5rem;
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      transition: color 0.3s, background 0.3s;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.05);
+    }
 
-        .header-animated {
-            
-            }
+    .navbar-menu li a:hover {
+      color: #ccc;
+    }
 
-        .header-animated .title-container {
-            position: relative;
-            top: 50%;
-            transform: translateY(-50%);
-            text-align: center;
-            z-index: 2;
-            color: white;
-        }
+    .header-animated {
+      height: 400px;
+      background: linear-gradient(270deg, #111, #222, #111);
+      background-size: 600% 600%;
+      animation: animateHeaderBG 16s ease infinite;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+    }
 
-        @keyframes animateHeaderBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+    .title-container {
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+      text-align: center;
+      z-index: 2;
+      color: white;
+    }
 
-        .title {
-            font-size: 4rem;
-            font-weight: 700;
-            color: transparent;
-            -webkit-text-stroke: 1.5px olive;
-            background: linear-gradient(135deg, #ffffff, #cccccc);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: titleShimmer 8s ease-in-out infinite;
-            letter-spacing: 2px;
-        }
+    @keyframes animateHeaderBG {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
 
-        @keyframes titleShimmer {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
+    .title {
+      font-size: 4rem;
+      font-weight: 700;
+      color: white;
+      animation: titleShimmer 8s ease-in-out infinite;
+      letter-spacing: 2px;
+    }
 
-        .subtitle {
-            font-size: 1.4rem;
-            color: #aaa;
-            font-weight: 300;
-            margin-top: 1rem;
-        }
+    @keyframes titleShimmer {
+      0%, 100% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+    }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-            position: relative;
-            z-index: 1;
-        }
+    .experience {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-top: 1rem;
+      background: linear-gradient(90deg, #00c9ff, #92fe9d, #f9cb28, #ff6ec4);
+      background-size: 400% 100%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: rainbowText 10s ease infinite;
+      letter-spacing: 1px;
+    }
 
-        .icons-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
+    @keyframes rainbowText {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+      .lab-description {
+      text-align: center;
+      margin: 3rem auto;
+      max-width: 800px;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: white;
+    }
 
-        .icon-card {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    padding: 2.5rem 2rem;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.4s ease;
-    backdrop-filter: blur(10px);
-    position: relative;
-    overflow: hidden;
-    min-width: 280px;
-    flex: 1;
-}
+    .publication-highlight {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: left;
+      gap: 4rem;
+      flex-wrap: nowrap;
+      padding: 4rem 2rem;
+      background-color: #111;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
 
-        .icon-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 255, 255, 0.3);
-            box-shadow: 0 20px 40px rgba(255, 255, 255, 0.1);
-        }
+    .pub-image img {
+      width: 320px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+    }
 
-        .icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 1.5rem;
-            background: linear-gradient(135deg, #4a4a4a, #6a6a6a);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            transition: all 0.3s ease;
-        }
+    .pub-content {
+      max-width: 600px;
+      text-align: left;
+    }
 
-        .icon-card:hover .icon {
-            transform: scale(1.1) rotate(5deg);
-        }
+    .pub-content h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: white;
+    }
 
-        .icon-title {
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 0.8rem;
-            color: #fff;
-        }
+    .pub-content p {
+      font-size: 1.1rem;
+      margin: 0.5rem 0;
+    }
 
-        .icon-description {
-            font-size: 0.95rem;
-            color: #bbb;
-            line-height: 1.4;
-        }
-            .experience {
-            font-size: 2rem;
-            font-weight: 600;
-            margin-top: 1rem;
-            background: linear-gradient(90deg, #00c9ff, #92fe9d, #f9cb28, #ff6ec4);
-            background-size: 400% 100%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: rainbowText 10s ease infinite;
-            letter-spacing: 1px;
-        }
+    .pub-content a {
+      color: #00c9ff;
+      text-decoration: none;
+    }
 
-        @keyframes rainbowText {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+    .pub-content a:hover {
+      color: #92fe9d;
+    }
 
-        #header-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  overflow: hidden;
-}
+    .footer {
+      background-color: #111;
+      padding: 2rem 2rem;
+      text-align: left;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin-top: 4rem;
+    }
 
-        #header-background .cell {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            animation: moveCell 30s linear infinite;
-        }
+    .footer-content {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+    }
 
-        .lab-description {
-            text-align: center;
-            margin: 3rem auto;
-            max-width: 800px;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #ccc;
-        }
+    .footer-content p {
+      margin: 0.5rem 0;
+      font-size: 1rem;
+      display: inline-block;
+      margin-right: 2rem;
+    }
 
-        .footer {
-    background-color: #111;
-    padding: 2rem 2rem;
-    text-align: left;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    margin-top: 4rem;
-}
+    .icons-grid {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin: 4rem auto;
+      max-width: 1200px;
+      padding: 2rem;
+    }
 
-        .footer-content p {
-    margin: 0.5rem 0;
-    font-size: 1rem;
-    display: inline-block;
-    margin-right: 2rem;
-}
+    .icon-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      width: 300px;
+    }
 
-        .footer-content a {
-            color: #00c9ff;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
+    .icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 1.5rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+    }
 
-        .footer-content a:hover {
-            color: #92fe9d;
-        }
+    .dna-icon {
+      background: linear-gradient(135deg, #4CAF50, #66BB6A);
+    }
+    .code-icon {
+      background: linear-gradient(135deg, #2196F3, #42A5F5);
+    }
+    .bio-icon {
+      background: linear-gradient(135deg, #FF9800, #FFB74D);
+    }
 
-.footer-content {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-}
+    .icon-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+      color: white;
+    }
 
-        .navbar-menu {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            list-style: none;
-            gap: 2rem;
-        }
+    .icon-description {
+      font-size: 0.95rem;
+      color: white;
+      line-height: 1.4;
+    }
 
-        .navbar-menu li a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.5rem;
-    padding: 0.75rem 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    transition: color 0.3s, background 0.3s;
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.05);
-}
-
-        .navbar-menu li a:hover {
-            color: #ccc;
-        }
-
-        .publication-highlight {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            padding: 4rem 2rem;
-            background-color: #111;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .pub-image img {
-            width: 250px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
-        }
-
-        .pub-content {
-            max-width: 500px;
-        }
-
-        .pub-content h2 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            color: olive;
-        }
-
-        .pub-content p {
-            font-size: 1.1rem;
-            margin: 0.5rem 0;
-        }
-
-        .pub-content a {
-            color: #00c9ff;
-            text-decoration: none;
-        }
-
-        .pub-content a:hover {
-            color: #92fe9d;
-        }
-
-</style>
 </head>
 <body>
-    
+  <script>
+    function showDetails(type) {
+      alert(`Show details for ${type}`);
+    }
+  </script>
 
-    <nav class="navbar">
-  <ul class="navbar-menu">
-    <li><a href="#"><span>🏠</span> Home</a></li>
-    <li><a href="#"><span>🧬</span> Data</a></li>
-    <li><a href="#"><span>💻</span> Code</a></li>
-    <li><a href="#"><span>📊</span> Team</a></li>
-  </ul>
-</nav>
+  <nav class="navbar">
+    <ul class="navbar-menu">
+      <li><a href="#" onmouseover="showDetails('home')"><span>🏠</span> Home</a></li>
+      <li><a href="#" onmouseover="showDetails('data')"><span>🧬</span> Data</a></li>
+      <li><a href="#" onmouseover="showDetails('code')"><span>💻</span> Code</a></li>
+      <li><a href="#" onmouseover="showDetails('team')"><span>📊</span> Team</a></li>
+    </ul>
+  </nav>
 
-    <div class="header-animated" style="height: 400px; background: linear-gradient(270deg, #111, #222, #111); background-size: 600% 600%; animation: animateHeaderBG 16s ease infinite; border-bottom: 1px solid rgba(255,255,255,0.1);">
-  <div class="title-container">
-    <h1 class="title">Butovsky Lab Data Portal</h1>
-    <h2 class="experience">MGnD Experience</h2>
-    <p class="subtitle">Advanced Research Data & Analytics Platform</p>
-  </div>
-  <div class="background" id="header-background"></div>
-</div>
+  <div class="header-animated">
+    <div class="title-container">
+      <h1 class="title">Butovsky Lab Data Portal</h1>
+      <h2 class="experience">MGnD Experience</h2>
+      <p class="subtitle">Advanced Research Data & Analytics Platform</p>
     </div>
+  </div>
+  <div class="lab-description">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget leo at velit imperdiet varius.</p>
+    <p>Fusce euismod, urna eu tincidunt consectetur, nisi nisl aliquet nulla, eget consequat nunc sapien nec purus.</p>
+    <p>Vivamus bibendum, sem ut hendrerit ultrices, sapien nulla posuere nisl, nec pulvinar enim justo at justo.</p>
+    <p>Donec aliquet, tortor nec commodo ultricies, velit urna bibendum augue, a sagittis nisl augue ac nisi.</p>
+    <p>Nullam eget lectus vel nulla cursus eleifend. Sed non massa quis augue tincidunt fermentum.</p>
+  </div>
 
-    
-    
-    
-
-
-
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget leo at velit imperdiet varius.</p>
-        <p>Fusce euismod, urna eu tincidunt consectetur, nisi nisl aliquet nulla, eget consequat nunc sapien nec purus.</p>
-        <p>Vivamus bibendum, sem ut hendrerit ultrices, sapien nulla posuere nisl, nec pulvinar enim justo at justo.</p>
-        <p>Donec aliquet, tortor nec commodo ultricies, velit urna bibendum augue, a sagittis nisl augue ac nisi.</p>
-        <p>Nullam eget lectus vel nulla cursus eleifend. Sed non massa quis augue tincidunt fermentum.</p>
-    
-<section class="publication-highlight">
+  <section class="publication-highlight">
     <div class="pub-image">
-        <img src="images/science-translational-med-2025.jpg" alt="Recent Publication Cover">
+      <img src="images/science-translational-med-2025.jpg" alt="Recent Publication Cover">
     </div>
     <div class="pub-content">
-        <h2>📰 Recent Publication</h2>
-        <p><strong>Title:</strong> Microglial Diversity in Human Disease</p>
-        <p><a href="https://doi.org/example" target="_blank">🔗 View Publication</a></p>
-        <p><a href="/objects/microglia-object.rds" target="_blank">🧬 Download Seurat Object</a></p>
-        <p><a href="/code/publication-analysis.zip" target="_blank">💻 Access Analysis Code</a></p>
+      <h2>📰 Recent Publication</h2>
+      <p><strong>Title:</strong> Microglial Diversity in Human Disease</p>
+      <p><a href="https://doi.org/example" target="_blank">🔗 View Publication</a></p>
+      <p><a href="/objects/microglia-object.rds" target="_blank">🧬 Download Seurat Object</a></p>
+      <p><a href="/code/publication-analysis.zip" target="_blank">💻 Access Analysis Code</a></p>
     </div>
-</section>
-$1
-  <div class="icons-interactive" id="icons-interactive">
-    <div class="icon-card" onmouseover="showDetails('ad-human-mg')">
+  </section>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <p>🔗 <a href="https://twitter.com/ButovskyLab" target="_blank">Twitter</a></p>
+      <p>🌐 <a href="https://butovskylab.hms.harvard.edu" target="_blank">Lab Website</a></p>
+      <p>📧 <a href="mailto:bioinformatics@butovskylab.org">Email Us</a></p>
+      <p>📬 <a href="/contact.html">Contact Page</a></p>
+    </div>
+  </footer>
+
+  <section class="icons-grid">
+    <div class="icon-card" onclick="showDetails('ad-human-mg')">
       <div class="icon dna-icon">🧬</div>
       <h3 class="icon-title">AD Human MG (APOE33-34)</h3>
       <p class="icon-description">Access Alzheimer's disease human microglia data with APOE genotype analysis</p>
     </div>
-    <div class="icon-card" onmouseover="showDetails('all-code')">
+
+    <div class="icon-card" onclick="showDetails('all-code')">
       <div class="icon code-icon">💻</div>
       <h3 class="icon-title">All Available Code</h3>
       <p class="icon-description">Browse and download analysis scripts, pipelines, and computational tools</p>
     </div>
-    <div class="icon-card" onmouseover="showDetails('bioinformatics')">
+
+    <div class="icon-card" onclick="showDetails('bioinformatics')">
       <div class="icon bio-icon">📊</div>
       <h3 class="icon-title">Bioinformatics People</h3>
       <p class="icon-description">Connect with our bioinformatics team and collaborators</p>
     </div>
-  </div>
-  <div class="icon-details" id="icon-details">
-    <img id="icon-image" src="" alt="Detail Image">
-  </div>
-</div>
-    <img id="icon-image" src="" alt="Detail Image">
-</div>
+  </section>
+</body>
+</html>
 
-<style>
-    .icons-wrapper {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: flex-start;
-      gap: 3rem;
-      flex-wrap: wrap;
-    }
-
-    .icons-interactive {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      gap: 2rem;
-      transition: all 0.3s ease;
-      flex-wrap: wrap;
-    }
-
-    .icon-details {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      transition: opacity 0.6s ease;
-      max-width: 400px;
-    }
-
-    .icon-details img {
-        max-width: 400px;
-        border-radius: 10px;
-        box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-    }
-</style>
-            <div class="icon-card" onclick="handleIconClick('ad-human-mg')">
-                <div class="icon dna-icon">🧬</div>
-                <h3 class="icon-title">AD Human MG (APOE33-34)</h3>
-                <p class="icon-description">Access Alzheimer's disease human microglia data with APOE genotype analysis</p>
-            </div>
-            <div class="icon-card" onclick="handleIconClick('all-code')">
-                <div class="icon code-icon">💻</div>
-                <h3 class="icon-title">All Available Code</h3>
-                <p class="icon-description">Browse and download analysis scripts, pipelines, and computational tools</p>
-            </div>
-            <div class="icon-card" onclick="handleIconClick('bioinformatics')">
-                <div class="icon bio-icon">📊</div>
-                <h3 class="icon-title">Bioinformatics People</h3>
-                <p class="icon-description">Connect with our bioinformatics team and collaborators</p>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        function showDetails(type) {
-  const detail = document.getElementById('icon-details');
-  const image = document.getElementById('icon-image');
-  const wrapper = document.querySelector('.icons-wrapper');
-  let src = '';
-  switch(type) {
-    case 'ad-human-mg': src = 'images/ad-human-mg.jpg'; break;
-    case 'all-code': src = 'images/code.jpg'; break;
-    case 'bioinformatics': src = 'images/bio.jpg'; break;
-  }
-  image.src = src;
-  detail.style.display = 'flex';
-  requestAnimationFrame(() => { detail.style.opacity = '1'; });
-    detail.style.display = 'flex';
-    detail.style.opacity = '0';
-    detail.style.transition = 'opacity 0.6s ease';
-    requestAnimationFrame(() => detail.style.opacity = '1');
-
-    const iconsContainer = document.querySelector('.icons-interactive');
-    iconsContainer.style.flexDirection = 'column';
-    iconsContainer.style.alignItems = 'center';
-}
-}
-            image.src = src;
-            detail.style.display = 'flex';
-        }
-        function handleIconClick(section) {
-            alert('Redirecting to ' + section);
-        }
-
-        
-
-        for (let i = 0; i < 60; i++) {
-    setTimeout(() => createHeaderCell(), i * 200);
-}
-
-        function createHeaderCell() {
-            const cell = document.createElement('div');
-            cell.className = 'cell';
-            cell.style.left = Math.random() * 100 + '%';
-            cell.style.top = Math.random() * 100 + '%';
-            cell.style.width = cell.style.height = Math.random() * 10 + 10 + 'px';
-            cell.style.animationDuration = Math.random() * 15 + 10 + 's';
-            document.getElementById('header-background').appendChild(cell);
-            setTimeout(() => cell.remove(), 30000);
-        }
-
-        setInterval(createHeaderCell, 400);
-    </script>
-    <footer class="footer">
-        <div class="footer-content">
-            <p>🔗 <a href="https://twitter.com/ButovskyLab" target="_blank">Follow us on Twitter</a></p>
-            <p>🌐 <a href="https://butovskylab.hms.harvard.edu" target="_blank">Visit the Butovsky Lab Website</a></p>
-            <p>📧 <a href="mailto:bioinformatics@butovskylab.org">Email for Bioinformatics Inquiries</a></p>
-            <p>📬 <a href="/contact.html">Contact Us</a></p>
-        </div>
-    </footer>
 
 </body>
 </html>
