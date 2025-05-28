@@ -1,3 +1,5 @@
+</section>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +15,7 @@
 
     body {
       font-family: 'Arial', sans-serif;
-      background: #000;
+      background: black;
       color: white;
       overflow-x: hidden;
       min-height: 100vh;
@@ -29,21 +31,11 @@
     }
 
     @keyframes moveCell {
-      0% {
-        transform: translate(0, 0);
-      }
-      25% {
-        transform: translate(20px, -30px);
-      }
-      50% {
-        transform: translate(-20px, -10px);
-      }
-      75% {
-        transform: translate(30px, 10px);
-      }
-      100% {
-        transform: translate(0, 0);
-      }
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(20px, -30px); }
+      50% { transform: translate(-20px, -10px); }
+      75% { transform: translate(30px, 10px); }
+      100% { transform: translate(0, 0); }
     }
 
     .navbar {
@@ -62,10 +54,12 @@
 
     .navbar-menu {
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
       list-style: none;
       gap: 2rem;
+      width: 100%;
+      padding: 0 2rem;
     }
 
     .navbar-menu li a {
@@ -104,15 +98,9 @@
     }
 
     @keyframes animateHeaderBG {
-      0% {
-        background-position: 0% 50%;
-      }
-      50% {
-        background-position: 100% 50%;
-      }
-      100% {
-        background-position: 0% 50%;
-      }
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     .title {
@@ -124,12 +112,8 @@
     }
 
     @keyframes titleShimmer {
-      0%, 100% {
-        background-position: 0% 50%;
-      }
-      50% {
-        background-position: 100% 50%;
-      }
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
     }
 
     .experience {
@@ -145,23 +129,21 @@
     }
 
     @keyframes rainbowText {
-      0% {
-        background-position: 0% 50%;
-      }
-      50% {
-        background-position: 100% 50%;
-      }
-      100% {
-        background-position: 0% 50%;
-      }
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
-      .lab-description {
+
+    .lab-description {
       text-align: center;
       margin: 3rem auto;
       max-width: 800px;
       font-size: 1.1rem;
       line-height: 1.8;
       color: white;
+      background-color: #222;
+      padding: 2rem;
+      border-radius: 12px;
     }
 
     .publication-highlight {
@@ -208,30 +190,6 @@
       color: #92fe9d;
     }
 
-    .footer {
-      background-color: #111;
-      padding: 2rem 2rem;
-      text-align: left;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      margin-top: 4rem;
-    }
-
-    .footer-content {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 0 2rem;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-
-    .footer-content p {
-      margin: 0.5rem 0;
-      font-size: 1rem;
-      display: inline-block;
-      margin-right: 2rem;
-    }
-
     .icons-grid {
       display: flex;
       justify-content: center;
@@ -240,6 +198,8 @@
       margin: 4rem auto;
       max-width: 1200px;
       padding: 2rem;
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
     }
 
     .icon-card {
@@ -264,15 +224,9 @@
       font-size: 2rem;
     }
 
-    .dna-icon {
-      background: linear-gradient(135deg, #4CAF50, #66BB6A);
-    }
-    .code-icon {
-      background: linear-gradient(135deg, #2196F3, #42A5F5);
-    }
-    .bio-icon {
-      background: linear-gradient(135deg, #FF9800, #FFB74D);
-    }
+    .dna-icon { background: linear-gradient(135deg, #4CAF50, #66BB6A); }
+    .code-icon { background: linear-gradient(135deg, #2196F3, #42A5F5); }
+    .bio-icon { background: linear-gradient(135deg, #FF9800, #FFB74D); }
 
     .icon-title {
       font-size: 1.4rem;
@@ -281,85 +235,107 @@
       color: white;
     }
 
-    .icon-description {
-      font-size: 0.95rem;
-      color: white;
-      line-height: 1.4;
+    .footer {
+      background-color: #111;
+      padding: 2rem 2rem;
+      text-align: left;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin-top: 4rem;
     }
 
+    .footer-content {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .footer-content p {
+      margin: 0.5rem 0;
+      font-size: 1rem;
+      display: inline-block;
+      margin-right: 2rem;
+    }
+  </style>
 </head>
 <body>
-  <script>
-    function showDetails(type) {
-      alert(`Show details for ${type}`);
-    }
-  </script>
+<script>
+  function showDetails(type) {
+    alert(`Show details for ${type}`);
+  }
+</script>
 
-  <nav class="navbar">
-    <ul class="navbar-menu">
-      <li><a href="#" onmouseover="showDetails('home')"><span>🏠</span> Home</a></li>
-      <li><a href="#" onmouseover="showDetails('data')"><span>🧬</span> Data</a></li>
-      <li><a href="#" onmouseover="showDetails('code')"><span>💻</span> Code</a></li>
-      <li><a href="#" onmouseover="showDetails('team')"><span>📊</span> Team</a></li>
-    </ul>
-  </nav>
+<nav class="navbar">
+  <ul class="navbar-menu">
+    <li><a href="#" onmouseover="showDetails('mgnd')"><span>🧠</span> MGnD Experience</a></li>
+    <li><a href="#" onmouseover="showDetails('home')"><span>🏠</span> Home</a></li>
+    <li><a href="#" onmouseover="showDetails('data')"><span>🧬</span> Data</a></li>
+    <li><a href="#" onmouseover="showDetails('code')"><span>💻</span> Code</a></li>
+    <li><a href="#" onmouseover="showDetails('team')"><span>📊</span> Team</a></li>
+  </ul>
+</nav>
 
-  <div class="header-animated">
-    <div class="title-container">
-      <h1 class="title">Butovsky Lab Data Portal</h1>
-      <h2 class="experience">MGnD Experience</h2>
-      <p class="subtitle">Advanced Research Data & Analytics Platform</p>
-    </div>
+<div class="header-animated">
+  <div class="title-container" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+    <h1 class="title">Butovsky Lab Data Portal</h1>
+    <p class="subtitle" style="font-size: 1.6rem;">Advanced Research Data & Analytics Platform</p>
   </div>
-  <div class="lab-description">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget leo at velit imperdiet varius.</p>
-    <p>Fusce euismod, urna eu tincidunt consectetur, nisi nisl aliquet nulla, eget consequat nunc sapien nec purus.</p>
-    <p>Vivamus bibendum, sem ut hendrerit ultrices, sapien nulla posuere nisl, nec pulvinar enim justo at justo.</p>
-    <p>Donec aliquet, tortor nec commodo ultricies, velit urna bibendum augue, a sagittis nisl augue ac nisi.</p>
-    <p>Nullam eget lectus vel nulla cursus eleifend. Sed non massa quis augue tincidunt fermentum.</p>
+</div>
+
+<div class="lab-description">
+  <p>Lorem ipsum dolor sit amet...</p>
+  <p>Fusce euismod, urna eu tincidunt consectetur...</p>
+  <p>Vivamus bibendum, sem ut hendrerit ultrices...</p>
+  <p>Donec aliquet, tortor nec commodo ultricies...</p>
+  <p>Nullam eget lectus vel nulla cursus eleifend...</p>
+</div>
+
+<section class="publication-highlight">
+  <div class="pub-image">
+    <img src="images/science-translational-med-2025.jpg" alt="Recent Publication Cover">
+  </div>
+  <div class="pub-content">
+    <h2>📰 Recent Publication</h2>
+    <p><strong>Title:</strong> Microglial Diversity in Human Disease</p>
+    <p><a href="https://doi.org/example" target="_blank">🔗 View Publication</a></p>
+    <p><a href="/objects/microglia-object.rds" target="_blank">🧬 Download Seurat Object</a></p>
+    <p><a href="/code/publication-analysis.zip" target="_blank">💻 Access Analysis Code</a></p>
+  </div>
+</section>
+
+<section class="icons-grid">
+  <div class="icon-card" onclick="showDetails('ad-human-mg')">
+    <div class="icon dna-icon">🧬</div>
+    <h3 class="icon-title">AD Human MG (APOE33-34)</h3>
+    <p class="icon-description">Access Alzheimer's disease human microglia data with APOE genotype analysis</p>
   </div>
 
-  <section class="publication-highlight">
-    <div class="pub-image">
-      <img src="images/science-translational-med-2025.jpg" alt="Recent Publication Cover">
-    </div>
-    <div class="pub-content">
-      <h2>📰 Recent Publication</h2>
-      <p><strong>Title:</strong> Microglial Diversity in Human Disease</p>
-      <p><a href="https://doi.org/example" target="_blank">🔗 View Publication</a></p>
-      <p><a href="/objects/microglia-object.rds" target="_blank">🧬 Download Seurat Object</a></p>
-      <p><a href="/code/publication-analysis.zip" target="_blank">💻 Access Analysis Code</a></p>
-    </div>
-  </section>
+  <div class="icon-card" onclick="showDetails('all-code')">
+    <div class="icon code-icon">💻</div>
+    <h3 class="icon-title">All Available Code</h3>
+    <p class="icon-description">Browse and download analysis scripts, pipelines, and computational tools</p>
+  </div>
 
-  <footer class="footer">
-    <div class="footer-content">
-      <p>🔗 <a href="https://twitter.com/ButovskyLab" target="_blank">Twitter</a></p>
-      <p>🌐 <a href="https://butovskylab.hms.harvard.edu" target="_blank">Lab Website</a></p>
-      <p>📧 <a href="mailto:bioinformatics@butovskylab.org">Email Us</a></p>
-      <p>📬 <a href="/contact.html">Contact Page</a></p>
-    </div>
-  </footer>
+  <div class="icon-card" onclick="showDetails('bioinformatics')">
+    <div class="icon bio-icon">📊</div>
+    <h3 class="icon-title">Bioinformatics People</h3>
+    <p class="icon-description">Connect with our bioinformatics team and collaborators</p>
+  </div>
+</section>
 
-  <section class="icons-grid">
-    <div class="icon-card" onclick="showDetails('ad-human-mg')">
-      <div class="icon dna-icon">🧬</div>
-      <h3 class="icon-title">AD Human MG (APOE33-34)</h3>
-      <p class="icon-description">Access Alzheimer's disease human microglia data with APOE genotype analysis</p>
-    </div>
 
-    <div class="icon-card" onclick="showDetails('all-code')">
-      <div class="icon code-icon">💻</div>
-      <h3 class="icon-title">All Available Code</h3>
-      <p class="icon-description">Browse and download analysis scripts, pipelines, and computational tools</p>
-    </div>
 
-    <div class="icon-card" onclick="showDetails('bioinformatics')">
-      <div class="icon bio-icon">📊</div>
-      <h3 class="icon-title">Bioinformatics People</h3>
-      <p class="icon-description">Connect with our bioinformatics team and collaborators</p>
-    </div>
-  </section>
+<footer class="footer">
+  <div class="footer-content">
+    <p>🔗 <a href="https://twitter.com/ButovskyLab" target="_blank">Twitter</a></p>
+    <p>🌐 <a href="https://butovskylab.hms.harvard.edu" target="_blank">Lab Website</a></p>
+    <p>📧 <a href="mailto:bioinformatics@butovskylab.org">Email Us</a></p>
+    <p>📬 <a href="/contact.html">Contact Page</a></p>
+  </div>
+</footer>
+
 </body>
 </html>
 
