@@ -33,6 +33,19 @@
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
+    .navbar-left {
+      position: absolute;
+      left: 1rem;
+      font-size: 1.5rem;
+      font-weight: bold;
+      background: linear-gradient(90deg, #00c9ff, #92fe9d, #f9cb28, #ff6ec4);
+      background-size: 400% 100%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: rainbowText 10s ease infinite;
+      letter-spacing: 1px;
+    }
+
     .navbar-menu {
       display: flex;
       justify-content: center;
@@ -59,11 +72,12 @@
       color: #ccc;
     }
 
-    h0px$2
+    .header-animated {
       position: relative;
       overflow: hidden;
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
       margin-bottom: 2rem;
+      height: 1400px;
     }
 
     .header-background {
@@ -91,14 +105,14 @@
     }
 
     .title {
-      font-size: 4rem;
+      font-size: 8rem;
       font-weight: 700;
       color: white;
       letter-spacing: 2px;
     }
 
     .experience {
-      font-size: 2rem;
+      font-size: 4rem;
       font-weight: 600;
       margin-top: 1rem;
       background: linear-gradient(90deg, #00c9ff, #92fe9d, #f9cb28, #ff6ec4);
@@ -173,7 +187,8 @@
       text-decoration: none;
       margin: 0 0.5rem;
     }
-      .icon-section {
+
+    .icon-section {
       display: flex;
       justify-content: center;
       gap: 2rem;
@@ -211,11 +226,11 @@
       font-size: 1rem;
       color: #ccc;
     }
-
-</style>
+  </style>
 </head>
 <body>
   <nav class="navbar">
+    <div class="navbar-left">MGnD Experience</div>
     <ul class="navbar-menu">
       <li><a href="#">Home</a></li>
       <li><a href="#">Data</a></li>
@@ -231,15 +246,13 @@
     </div>
   </div>
 
-  <div style="margin-top: 500px;"></div>
-
-$1
+  <div class="lab-summary">
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     <p>Vivamus fermentum semper lorem, ac sollicitudin dolor aliquam in.</p>
     <p>Suspendisse potenti. Aenean ut lorem a justo.</p>
     <p>Aliquam erat volutpat. In nec mi convallis, egestas.</p>
     <p>Curabitur nec mauris vel justo vehicula tincidunt eget nec justo.</p>
-  </section>
+  </div>
 
   <section class="publication-section">
     <img src="stm.2025.17.issue-800.largecover.jpg" alt="Recent Publication Cover">
@@ -307,3 +320,4 @@ $1
   </script>
 </body>
 </html>
+
