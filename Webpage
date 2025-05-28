@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Butovsky Lab Data Portal - GitHub Pages</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Animated background */
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(-45deg, #0a0a0a, #1a1a1a, #0f0f0f, #151515);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        .background::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(120, 120, 120, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(120, 120, 120, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(120, 120, 120, 0.05) 0%, transparent 50%);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-20px) rotate(1deg); }
+            66% { transform: translateY(10px) rotate(-1deg); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding: 2rem 0;
+        }
+
+        .title {
+            font-size: 3.5rem;
+            font-weight: 300;
+            background: linear-gradient(135deg, #ffffff, #cccccc, #ffffff);
+            background-size: 200% 200%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: titleShimmer 8s ease-in-out infinite;
+            text-shadow: none;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+
+        @keyframes titleShimmer {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #888;
+            font-weight: 300;
+            opacity: 0.8;
+        }
+
+        .icons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .icon-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .icon-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.6s;
+        }
+
+        .icon-card:hover::before {
+            left: 100%;
+        }
+
+        .icon-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 20px 40px rgba(255, 255, 255, 0.1);
+        }
+
+        .icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, #4a4a4a, #6a6a6a);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .icon-card:hover .icon {
+            transform: scale(1.1) rotate(5deg);
+            background: linear-gradient(135deg, #6a6a6a, #8a8a8a);
+        }
+
+        .icon-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: #fff;
+        }
+
+        .icon-description {
+            font-size: 0.95rem;
+            color: #bbb;
+            line-height: 1.4;
+        }
+
+        /* Specific icon styles */
+        .dna-icon { background: linear-gradient(135deg, #4CAF50, #66BB6A); }
+        .code-icon { background: linear-gradient(135deg, #2196F3, #42A5F5); }
+        .bio-icon { background: linear-gradient(135deg, #FF9800, #FFB74D); }
+
+        .icon-card:hover .dna-icon { background: linear-gradient(135deg, #66BB6A, #81C784); }
+        .icon-card:hover .code-icon { background: linear-gradient(135deg, #42A5F5, #64B5F6); }
+        .icon-card:hover .bio-icon { background: linear-gradient(135deg, #FFB74D, #FFCC02); }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2.5rem;
+            }
+            
+            .icons-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+        }
+
+        /* Floating particles effect */
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: floatUp 8s linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% {
+                opacity: 0;
+                transform: translateY(100vh) scale(0);
+            }
+            10% {
+                opacity: 1;
+                transform: translateY(90vh) scale(1);
+            }
+            90% {
+                opacity: 1;
+                transform: translateY(-10vh) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-20vh) scale(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    
+    <div class="container">
+        <header class="header">
+            <h1 class="title">Butovsky Lab Data Portal</h1>
+            <p class="subtitle">Advanced Research Data & Analytics Platform</p>
+        </header>
+
+        <div class="icons-grid">
+            <div class="icon-card" onclick="handleIconClick('ad-human-mg')">
+                <div class="icon dna-icon">🧬</div>
+                <h3 class="icon-title">AD Human MG (APOE33-34)</h3>
+                <p class="icon-description">Access Alzheimer's disease human microglia data with APOE genotype analysis</p>
+            </div>
+
+            <div class="icon-card" onclick="handleIconClick('all-code')">
+                <div class="icon code-icon">💻</div>
+                <h3 class="icon-title">All Available Code</h3>
+                <p class="icon-description">Browse and download analysis scripts, pipelines, and computational tools</p>
+            </div>
+
+            <div class="icon-card" onclick="handleIconClick('bioinformatics')">
+                <div class="icon bio-icon">📊</div>
+                <h3 class="icon-title">Bioinformatics People</h3>
+                <p class="icon-description">Connect with our bioinformatics team and collaborators</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Handle icon clicks
+        function handleIconClick(section) {
+            switch(section) {
+                case 'ad-human-mg':
+                    alert('Redirecting to AD Human MG (APOE33-34) data section...');
+                    // Replace with actual navigation: window.location.href = 'ad-human-mg.html';
+                    break;
+                case 'all-code':
+                    alert('Redirecting to code repository...');
+                    // Replace with actual navigation: window.location.href = 'code-repository.html';
+                    break;
+                case 'bioinformatics':
+                    alert('Redirecting to bioinformatics team page...');
+                    // Replace with actual navigation: window.location.href = 'bioinformatics-team.html';
+                    break;
+            }
+        }
+
+        // Create floating particles
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.width = particle.style.height = Math.random() * 4 + 2 + 'px';
+            particle.style.animationDuration = Math.random() * 4 + 6 + 's';
+            particle.style.opacity = Math.random() * 0.5 + 0.1;
+            
+            document.body.appendChild(particle);
+            
+            setTimeout(() => {
+                particle.remove();
+            }, 8000);
+        }
+
+        // Generate particles periodically
+        setInterval(createParticle, 2000);
+
+        // Add some initial particles
+        for (let i = 0; i < 5; i++) {
+            setTimeout(createParticle, i * 400);
+        }
+    </script>
+</body>
+</html>
