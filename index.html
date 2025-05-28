@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,6 +18,9 @@
       color: white;
       overflow-x: hidden;
       min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 200px; /* space for footer */
     }
 
     .navbar {
@@ -107,14 +109,14 @@
     }
 
     .title {
-      font-size: 2rem;
+      font-size: 4rem;
       font-weight: 700;
       color: white;
       letter-spacing: 2px;
     }
 
     .experience {
-      font-size: 4rem;
+      font-size: 2rem;
       font-weight: 600;
       margin-top: 1rem;
       background: linear-gradient(90deg, #00c9ff, #92fe9d, #f9cb28, #ff6ec4);
@@ -136,6 +138,7 @@
       margin: 2rem 0 0 5%;
       font-size: 2rem;
       font-weight: bold;
+      color: yellow;
       border-bottom: 2px solid white;
       width: fit-content;
     }
@@ -146,6 +149,47 @@
       margin: 1rem 0 4rem 5%;
       font-size: 1.2rem;
       line-height: 1.8;
+    }
+
+    .icon-section {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 2rem 5%;
+      flex-wrap: wrap;
+    }
+
+    .icon-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 2rem;
+      text-align: center;
+      width: 320px;
+      color: yellow;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .icon-card:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-5px);
+    }
+
+    .icon {
+      font-size: 4.4rem;
+      margin-bottom: 1rem;
+      color: yellow;
+    }
+
+    .icon-title {
+      font-size: 1.65rem;
+      margin-bottom: 0.5rem;
+      color: yellow;
+    }
+
+    .icon-description {
+      font-size: 1.1rem;
+      color: yellow;
     }
 
     .publication-section {
@@ -189,53 +233,18 @@
       display: flex;
       justify-content: space-around;
       align-items: center;
-      font-size: 0.95rem;
+      font-size: 1.425rem;
       border-top: 1px solid rgba(255, 255, 255, 0.1);
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      z-index: 10;
     }
 
     footer a {
       color: #0ff;
       text-decoration: none;
       margin: 0 0.5rem;
-    }
-
-    .icon-section {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      padding: 2rem;
-      flex-wrap: wrap;
-    }
-
-    .icon-card {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 20px;
-      padding: 2rem;
-      text-align: center;
-      width: 280px;
-      color: white;
-      transition: all 0.3s ease-in-out;
-    }
-
-    .icon-card:hover {
-      background: rgba(255, 255, 255, 0.1);
-      transform: translateY(-5px);
-    }
-
-    .icon {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .icon-title {
-      font-size: 1.3rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .icon-description {
-      font-size: 1rem;
-      color: #ccc;
     }
   </style>
 </head>
@@ -267,21 +276,11 @@
     <p>Curabitur nec mauris vel justo vehicula tincidunt eget nec justo.</p>
   </div>
 
-  <section class="publication-section">
-    <img src="stm.2025.17.issue-800.largecover.jpg" alt="Recent Publication Cover">
-    <div class="publication-info">
-      <h2>Recent Publication: Microglia Dynamics in Disease</h2>
-      <p>This study explores how microglial states change during neurodegeneration and reveals potential therapeutic pathways.</p>
-      <a href="#">View Object</a>
-      <a href="#">View Code</a>
-    </div>
-  </section>
-
   <section class="icon-section">
     <div class="icon-card">
       <div class="icon">🧬</div>
       <h3 class="icon-title">AD Human MG (APOE33-34)</h3>
-      <p class="icon-description">Access Alzheimer's disease human microglia data with APOE genotype analysis</p>
+      <p class="icon-description">Access Alzheimer's disease human microglia data with APOE genotype analysis}</p>
     </div>
     <div class="icon-card">
       <div class="icon">💻</div>
@@ -292,6 +291,16 @@
       <div class="icon">📊</div>
       <h3 class="icon-title">Bioinformatics Team</h3>
       <p class="icon-description">Connect with our bioinformatics team and collaborators</p>
+    </div>
+  </section>
+
+  <section class="publication-section">
+    <img src="stm.2025.17.issue-800.largecover.jpg" alt="Recent Publication Cover">
+    <div class="publication-info">
+      <h2>Recent Publication: Microglia Dynamics in Disease</h2>
+      <p>This study explores how microglial states change during neurodegeneration and reveals potential therapeutic pathways.</p>
+      <a href="#">View Object</a>
+      <a href="#">View Code</a>
     </div>
   </section>
 
@@ -319,11 +328,7 @@
       const xMove = Math.random() * 200 - 100;
       const yMove = Math.random() * 200 - 100;
 
-      const keyframes = `@keyframes float${i} {
-        0% { transform: translate(0, 0); }
-        50% { transform: translate(${xMove}px, ${yMove}px); }
-        100% { transform: translate(0, 0); }
-      }`;
+      const keyframes = `@keyframes float${i} {\n        0% { transform: translate(0, 0); }\n        50% { transform: translate(${xMove}px, ${yMove}px); }\n        100% { transform: translate(0, 0); }\n      }`;
 
       const styleSheet = document.styleSheets[0];
       styleSheet.insertRule(keyframes, styleSheet.cssRules.length);
