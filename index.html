@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,247 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Butovsky Lab Data Portal - GitHub Pages</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html, body {
-      height: 100%;
-    }
-
-    body {
-      display: flex;
-      flex-direction: column;
-      font-family: 'Arial', sans-serif;
-      background: black;
-      color: snow;
-      overflow-x: hidden;
-      min-height: 100vh;
-    }
-
-    .navbar {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: rgba(0, 0, 0, 0.6);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 2rem;
-      padding: 1rem 0;
-      z-index: 10;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .navbar-left {
-      position: absolute;
-      left: 1rem;
-      font-size: 1.5rem;
-      font-weight: bold;
-      background: linear-gradient(90deg, #00c9ff, #92fe9d, #f9cb28, #ff6ec4);
-      background-size: 400% 100%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: rainbowText 10s ease infinite;
-      letter-spacing: 1px;
-    }
-
-    .navbar-menu {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      list-style: none;
-      gap: 2rem;
-      padding: 0;
-      margin: 0;
-    }
-
-    .navbar-menu li a {
-      color: snow;
-      text-decoration: none;
-      font-size: 1.5rem;
-      padding: 0.75rem 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      transition: color 0.3s;
-      border-radius: 8px;
-    }
-
-    .navbar-menu li a:hover {
-      color: #ccc;
-    }
-
-    .header-animated {
-      position: relative;
-      overflow: hidden;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      margin-bottom: 2rem;
-      height: 1400px;
-    }
-
-    .header-background {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      overflow: hidden;
-    }
-
-    .title-container {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: left;
-      z-index: 2;
-      color: snow;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100%;
-      width: 100%;
-    }
-
-    .title {
-      font-size: 4rem;
-      font-weight: 700;
-      color: snow;
-      letter-spacing: 2px;
-    }
-
-    .experience {
-      font-size: 2rem;
-      font-weight: 600;
-      margin-top: 1rem;
-      background: linear-gradient(90deg, #00c9ff, #92fe9d, #f9cb28, #ff6ec4);
-      background-size: 400% 100%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: rainbowText 10s ease infinite;
-      letter-spacing: 1px;
-    }
-
-    @keyframes rainbowText {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    .mission {
-      text-align: left;
-      margin: 2rem 0 0 5%;
-      font-size: 2rem;
-      font-weight: bold;
-      color: #f9ab1a;
-      border-bottom: 2px solid white;
-      width: fit-content;
-    }
-
-    .lab-summary {
-      text-align: left;
-      max-width: 800px;
-      margin: 1rem 0 4rem 5%;
-      font-size: 1.2rem;
-      line-height: 1.8;
-    }
-
-    .icon-section {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      padding: 2rem 5%;
-      flex-wrap: wrap;
-    }
-
-    .icon-card {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 20px;
-      padding: 2rem;
-      text-align: center;
-      width: 320px;
-      transition: all 0.3s ease-in-out;
-    }
-
-    .icon-card:hover {
-      background: rgba(255, 255, 255, 0.1);
-      transform: translateY(-5px);
-    }
-
-    .icon {
-      font-size: 4.4rem;
-      margin-bottom: 1rem;
-      color: yellow;
-    }
-
-    .icon-title {
-      font-size: 1.65rem;
-      margin-bottom: 0.5rem;
-      color: #f9ab1a;
-    }
-
-    $1
-
-    /* White text for AD Human MG description */
-    .icon-card.ad-human .icon-description {
-      color: snow;
-    }
-
-    .publication-section {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 2rem;
-      padding: 4rem 2rem;
-      flex-wrap: wrap;
-    }
-
-    .publication-section img {
-      width: 250px;
-      border-radius: 12px;
-    }
-
-    .publication-info {
-      max-width: 600px;
-    }
-
-    .publication-info h2 {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-    }
-
-    .publication-info p {
-      margin-bottom: 1rem;
-    }
-
-    .publication-info a {
-      display: inline-block;
-      margin-right: 1rem;
-      color: #0ff;
-      text-decoration: none;
-    }
-
-    footer {
-      background: #111;
-      color: snow;
-      padding: 2rem;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      font-size: 1.425rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      margin-top: auto;
-    }
-
-    footer a {
-      color: #0ff;
-      text-decoration: none;
-      margin: 0 0.5rem;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; }
+    body { display: flex; flex-direction: column; font-family: 'Arial', sans-serif; background: black; color: snow; overflow-x: hidden; min-height: 100vh; }
+    .navbar { position: fixed; top: 0; width: 100%; background: rgba(0,0,0,0.6); display: flex; justify-content: center; align-items: center; gap: 2rem; padding: 1rem 0; z-index: 10; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .navbar-left { position: absolute; left: 1rem; font-size: 1.5rem; font-weight: bold; background: linear-gradient(90deg,#00c9ff,#92fe9d,#f9cb28,#ff6ec4); background-size: 400% 100%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: rainbowText 10s ease infinite; letter-spacing: 1px; }
+    .navbar-menu { display: flex; gap: 2rem; list-style: none; }
+    .navbar-menu li a { color: snow; text-decoration: none; font-size: 1.5rem; padding: 0.75rem 1.5rem; transition: color 0.3s; border-radius: 8px; }
+    .navbar-menu li a:hover { color: #ccc; }
+    .header-animated { position: relative; overflow: hidden; border-bottom: 1px solid rgba(255,255,255,0.1); margin-top: 4rem; height: 2100px; }
+    .header-background { position: absolute; width: 100%; height: 100%; z-index: 0; }
+    .title-container { position: absolute; top:50%; left:50%; transform: translate(-50%,-50%); z-index:2; display:flex; flex-direction:column; align-items:center; color: snow; }
+    .title { font-size:4rem; font-weight:700; letter-spacing:2px; }
+    .experience { font-size:2rem; font-weight:600; margin-top:1rem; background: linear-gradient(90deg,#00c9ff,#92fe9d,#f9cb28,#ff6ec4); background-size:400% 100%; -webkit-background-clip:text; -webkit-text-fill-color:transparent; animation: rainbowText 10s ease infinite; }
+    @keyframes rainbowText { 0% { background-position:0% 50%; } 50% { background-position:100% 50%; } 100% { background-position:0% 50%; } }
+    .mission { margin:2rem 0 0 5%; font-size:2rem; font-weight:bold; color:#f9ab1a; border-bottom:2px solid white; width:fit-content; }
+    .lab-summary { text-align:left; max-width:800px; margin:1rem 0 4rem 5%; font-size:1.2rem; line-height:1.8; }
+    .icon-section { display:flex; justify-content:center; gap:2rem; padding:2rem 5%; flex-wrap:wrap; }
+    .icon-card { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:20px; padding:2rem; text-align:center; width:320px; transition:all 0.3s ease-in-out; }
+    .icon-card:hover { background:rgba(255,255,255,0.1); transform:translateY(-5px); }
+    .icon { font-size:4.4rem; margin-bottom:1rem; color:yellow; }
+    .icon-title { font-size:1.65rem; margin-bottom:0.5rem; color:#f9ab1a; }
+    .icon-description { font-size:1.1rem; color:yellow; }
+    .icon-card.ad-human .icon-description { color: snow; }
+    .publication-section { display:flex; justify-content:center; align-items:center; gap:2rem; padding:4rem 2rem; flex-wrap:wrap; }
+    .publication-section img { width:250px; border-radius:12px; }
+    .publication-info { max-width:600px; }
+    .publication-info h2 { font-size:1.8rem; margin-bottom:1rem; }
+    .publication-info p { margin-bottom:1rem; }
+    .publication-info a { color:#0ff; text-decoration:none; margin-right:1rem; }
+    footer { background:#111; color:snow; padding:2rem; display:flex; justify-content:space-around; align-items:center; font-size:1.425rem; border-top:1px solid rgba(255,255,255,0.1); margin-top:auto; }
+    footer a { color:#0ff; text-decoration:none; margin:0 0.5rem; }
   </style>
 </head>
 <body>
@@ -270,6 +59,8 @@
   <div class="mission">Our mission</div>
 
   <div class="lab-summary">
+    <p>Praesent euismod sapien vel sapien euismod, vitae consequat tortor ultricies.</p>
+    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem.</p>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     <p>Vivamus fermentum semper lorem, ac sollicitudin dolor aliquam in.</p>
     <p>Suspendisse potenti. Aenean ut lorem a justo.</p>
@@ -314,19 +105,14 @@
 
   <script>
     const headerBackground = document.querySelector('.header-background');
-    const colors = ['#00c9ff', '#92fe9d', '#f9cb28', '#ff6ec4', '#ffffff', '#4caf50'];
+    const colors = ['#00c9ff','#92fe9d','#f9cb28','#ff6ec4','#ffffff','#4caf50'];
     for (let i = 0; i < 40; i++) {
-      const shape = document.createElement('div');
-      shape.style.position = 'absolute';
-      shape.style.width = shape.style.height = `${Math.random() * 12 + 8}px`;
-      shape.style.top = `${Math.random() * 100}%`;
-      shape.style.left = `${Math.random() * 100}%`;
-      shape.style.background = colors[Math.floor(Math.random() * colors.length)];
-      shape.style.borderRadius = '50%'; shape.style.border = '2px solid white'; shape.style.boxShadow = '0 0 10px rgba(255,255,255,0.5)';
-      shape.style.opacity = '0.3';
-      shape.style.animation = `float${i} 20s linear infinite`;
-
-      const xMove = Math.random() * 200 - 100;
-      const yMove = Math.random() * 200 - 100;
-
-      const keyframes = `@keyframes float${i} {\n        0% { transform: translate(0, 0); }\n        50% { transform: translate(${xMove}px, ${yMove}px); }\n        100% { transform: translate(
+      const shape = document.createElement('div'); shape.style.position='absolute'; shape.style.width=shape.style.height=`${Math.random()*12+8}px`; shape.style.top=`${Math.random()*100}%`; shape.style.left=`${Math.random()*100}%`; shape.style.background=colors[Math.floor(Math.random()*colors.length)]; shape.style.borderRadius='50%'; shape.style.border='2px solid white'; shape.style.boxShadow='0 0 10px rgba(255,255,255,0.5)'; shape.style.opacity='0.3'; shape.style.animation=`float${i} 20s linear infinite`;
+      const xMove=Math.random()*200-100, yMove=Math.random()*200-100;
+      const keyframes=`@keyframes float${i}{0%{transform:translate(0,0)}50%{transform:translate(${xMove}px,${yMove}px)}100%{transform:translate(0,0)}}`;
+      document.styleSheets[0].insertRule(keyframes,document.styleSheets[0].cssRules.length);
+      headerBackground.appendChild(shape);
+    }
+  </script>
+</body>
+</html>
