@@ -13,7 +13,7 @@
     .navbar-menu { display: flex; gap: 2rem; list-style: none; }
     .navbar-menu li a { color: snow; text-decoration: none; font-size: 1.5rem; padding: 0.75rem 1.5rem; transition: color 0.3s; border-radius: 8px; }
     .navbar-menu li a:hover { color: #ccc; }
-    .header-animated { position: relative; overflow: hidden; border-bottom: 1px solid rgba(255,255,255,0.1); margin-top: 4rem; height: 4000px; }
+    .header-animated { position: relative; overflow: hidden; border-bottom: 1px solid rgba(255,255,255,0.1); margin-top: 4rem; height: 600px; }
     .header-background { position: absolute; width: 100%; height: 100%; z-index: 0; }
     .title-container { position: absolute; top:50%; left:50%; transform: translate(-50%,-50%); z-index:2; display:flex; flex-direction:column; align-items:center; color: snow; }
     .title { font-size:4rem; font-weight:700; letter-spacing:2px; }
@@ -21,8 +21,6 @@
     @keyframes rainbowText { 0% { background-position:0% 50%; } 50% { background-position:100% 50%; } 100% { background-position:0% 50%; } }
     .mission { margin:2rem 0 0 5%; font-size:2rem; font-weight:bold; color:#f9ab1a; border-bottom:2px solid white; width:fit-content; }
     .lab-summary { text-align:left; max-width:800px; margin:1rem 0 4rem 5%; font-size:1.2rem; line-height:1.8; }
-    .lab-summary p { margin-bottom: 1rem; /* adjust this value to taste */}
-
     .icon-section { display:flex; justify-content:center; gap:2rem; padding:2rem 5%; flex-wrap:wrap; }
     .icon-card { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:20px; padding:2rem; text-align:center; width:320px; transition:all 0.3s ease-in-out; }
     .icon-card:hover { background:rgba(255,255,255,0.1); transform:translateY(-5px); }
@@ -96,28 +94,29 @@
     </div>
   </section>
 
-<!-- Recent Publications title -->
-<div class="section-title">
-  <h2>Recent Publications</h2>
-</div>
+  
 
 <section class="publication-section">
   <div class="publication-card">
     <img src="stm.2025.17.issue-800.largecover.jpg" alt="Publication Cover">
     <div class="publication-info">
-      <h2>Recent Publication: Microglia Dynamics in Disease</h2>
+      <h2>Inhaled xenon modulates microglia and ameliorates disease in mouse models of amyloidosis and tauopathy</h2>
       <p>This study explores how microglial states change during neurodegeneration and reveals potential therapeutic pathways.</p>
       <a href="#">View Object</a>
       <a href="#">View Code</a>
+      <a href="#">Publication Link</a>
+
     </div>
   </div>
   <div class="publication-card">
     <img src="stm.2025.17.issue-800.largecover.jpg" alt="Publication Cover">
     <div class="publication-info">
-      <h2>Recent Publication: Microglia Dynamics in Disease</h2>
+      <h2>Sex-dependent APOE4 neutrophil–microglia interactions drive cognitive impairment in Alzheimer’s disease</h2>
       <p>This study explores how microglial states change during neurodegeneration and reveals potential therapeutic pathways.</p>
       <a href="#">View Object</a>
       <a href="#">View Code</a>
+      <a href="#">Publication Link</a>
+
     </div>
   </div>
 </section>
@@ -143,4 +142,3 @@
   </script>
 </body>
 </html>
-
