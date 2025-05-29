@@ -286,40 +286,82 @@
     <div><a href="#contact">Contact Us</a></div>
   </footer>
 
+<div class="header-background">
+  <canvas id="cellCanvas"></canvas>
+</div>
+  
 <script>
+  // Setup floating dots
   const headerBackground = document.querySelector('.header-background');
+  const canvas = document.createElement('canvas');
+  canvas.id = 'cellCanvas';
+  headerBackground.appendChild(canvas);
+
+  const ctx = canvas.getContext('2d');
+
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = document.querySelector('.header-animated').offsetHeight;
+  }
+
+  window.addEventListener('resize', resizeCanvas);
+  resizeCanvas();
+
   const colors = ['#00c9ff', '#92fe9d', '#f9cb28', '#ff6ec4', '#ffffff', '#4caf50'];
 
-  for (let i = 0; i < 40; i++) {
-    const shape = document.createElement('div');
-    shape.style.position = 'absolute';
-    shape.style.width = shape.style.height = `${Math.random() * 12 + 8}px`;
-    shape.style.top = `${Math.random() * 100}%`;
-    shape.style.left = `${Math.random() * 100}%`;
-    shape.style.background = colors[Math.floor(Math.random() * colors.length)];
-    shape.style.borderRadius = '50%';
-    shape.style.opacity = '0.9'; // brighter
-    shape.style.boxShadow = '0 0 20px currentColor'; // glow effect
-    shape.style.animation = `float${i} 20s linear infinite`;
+  const dots = Array.from({ length: 40 }, () => ({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    dx: Math.random() * 0.5 - 0.25,
+    dy: Math.random() * 0.5 - 0.25,
+    radius: Math.random() * 6 + 4,
+    color: colors[Math.floor(Math.random() * colors.length)]
+  }));
 
-    const xMove = Math.random() * 200 - 100;
-    const yMove = Math.random() * 200 - 100;
+  function drawFrame() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    const keyframes = `@keyframes float${i} {
-      0% { transform: translate(0, 0); }
-      50% { transform: translate(${xMove}px, ${yMove}px); }
-      100% { transform: translate(0, 0); }
-    }`;
+    // Draw lines between close dots
+    for (let i = 0; i < dots.length; i++) {
+      for (let j = i + 1; j < dots.length; j++) {
+        const a = dots[i];
+        const b = dots[j];
+        const dist = Math.hypot(a.x - b.x, a.y - b.y);
+        if (dist < 120) {
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.strokeStyle = 'rgba(255,255,255,0.15)';
+          ctx.lineWidth = 1;
+          ctx.stroke();
+        }
+      }
+    }
 
-    const styleSheet = document.styleSheets[0];
-    styleSheet.insertRule(keyframes, styleSheet.cssRules.length);
+    // Draw glowing dots
+    dots.forEach(dot => {
+      ctx.beginPath();
+      ctx.arc(dot.x, dot.y, dot.radius, 0, Math.PI * 2);
+      ctx.fillStyle = dot.color;
+      ctx.shadowColor = dot.color;
+      ctx.shadowBlur = 15;
+      ctx.fill();
 
-    headerBackground.appendChild(shape);
+      // update positions
+      dot.x += dot.dx;
+      dot.y += dot.dy;
+
+      // bounce off edges
+      if (dot.x < 0 || dot.x > canvas.width) dot.dx *= -1;
+      if (dot.y < 0 || dot.y > canvas.height) dot.dy *= -1;
+    });
+
+    requestAnimationFrame(drawFrame);
   }
+
+  drawFrame();
 </script>
 
-</body>
-</html>
 
 </body>
 </html>
