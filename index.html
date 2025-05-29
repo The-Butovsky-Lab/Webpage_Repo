@@ -12,15 +12,18 @@
       box-sizing: border-box;
     }
 
+    html, body {
+      height: 100%;
+    }
+
     body {
-      font-family: 'Arial', sans-serif;
-      background: black;
-      color: white;
-      overflow-x: hidden;
-      min-height: 100vh;
       display: flex;
       flex-direction: column;
-      padding-bottom: 200px; /* space for footer */
+      font-family: 'Arial', sans-serif;
+      background: black;
+      color: snow;
+      overflow-x: hidden;
+      min-height: 100vh;
     }
 
     .navbar {
@@ -61,7 +64,7 @@
     }
 
     .navbar-menu li a {
-      color: white;
+      color: snow;
       text-decoration: none;
       font-size: 1.5rem;
       padding: 0.75rem 1.5rem;
@@ -99,7 +102,7 @@
       transform: translate(-50%, -50%);
       text-align: left;
       z-index: 2;
-      color: white;
+      color: snow;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -111,7 +114,7 @@
     .title {
       font-size: 4rem;
       font-weight: 700;
-      color: white;
+      color: snow;
       letter-spacing: 2px;
     }
 
@@ -138,7 +141,7 @@
       margin: 2rem 0 0 5%;
       font-size: 2rem;
       font-weight: bold;
-      color: yellow;
+      color: #f9ab1a;
       border-bottom: 2px solid white;
       width: fit-content;
     }
@@ -166,7 +169,6 @@
       padding: 2rem;
       text-align: center;
       width: 320px;
-      color: yellow;
       transition: all 0.3s ease-in-out;
     }
 
@@ -184,12 +186,14 @@
     .icon-title {
       font-size: 1.65rem;
       margin-bottom: 0.5rem;
-      color: yellow;
+      color: #f9ab1a;
     }
 
-    .icon-description {
-      font-size: 1.1rem;
-      color: yellow;
+    $1
+
+    /* White text for AD Human MG description */
+    .icon-card.ad-human .icon-description {
+      color: snow;
     }
 
     .publication-section {
@@ -228,17 +232,14 @@
 
     footer {
       background: #111;
-      color: white;
+      color: snow;
       padding: 2rem;
       display: flex;
       justify-content: space-around;
       align-items: center;
       font-size: 1.425rem;
       border-top: 1px solid rgba(255, 255, 255, 0.1);
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      z-index: 10;
+      margin-top: auto;
     }
 
     footer a {
@@ -277,10 +278,10 @@
   </div>
 
   <section class="icon-section">
-    <div class="icon-card">
+    <div class="icon-card ad-human">
       <div class="icon">🧬</div>
       <h3 class="icon-title">AD Human MG (APOE33-34)</h3>
-      <p class="icon-description">Access Alzheimer's disease human microglia data with APOE genotype analysis}</p>
+      <p class="icon-description">Access Alzheimer's disease human microglia data with APOE genotype analysis</p>
     </div>
     <div class="icon-card">
       <div class="icon">💻</div>
@@ -328,13 +329,4 @@
       const xMove = Math.random() * 200 - 100;
       const yMove = Math.random() * 200 - 100;
 
-      const keyframes = `@keyframes float${i} {\n        0% { transform: translate(0, 0); }\n        50% { transform: translate(${xMove}px, ${yMove}px); }\n        100% { transform: translate(0, 0); }\n      }`;
-
-      const styleSheet = document.styleSheets[0];
-      styleSheet.insertRule(keyframes, styleSheet.cssRules.length);
-
-      headerBackground.appendChild(shape);
-    }
-  </script>
-</body>
-</html>
+      const keyframes = `@keyframes float${i} {\n        0% { transform: translate(0, 0); }\n        50% { transform: translate(${xMove}px, ${yMove}px); }\n        100% { transform: translate(
